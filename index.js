@@ -16,11 +16,14 @@ module.exports = function smsLink (options) {
 }
 
 function detectSeparator () {
-  var defaultSeparator = '?'
+  var defaultSeparator = '%2F&'
+  var androidSeparator = '?'
 
-  if (isAndroid) return defaultSeparator
+  
+  if (isAndroid) return androidSeparator
   if (isIos && iOsVersion) {
     return iOsVersion.major < 8 ? ';' : '&'
   }
+
   return defaultSeparator
 }
